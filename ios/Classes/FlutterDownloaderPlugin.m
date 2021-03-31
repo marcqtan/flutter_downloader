@@ -299,6 +299,9 @@ static BOOL debug = YES;
         NSLog(@"filename: %@", filename);
     }
     NSURL *savedDirURL = [NSURL fileURLWithPath:savedDir];
+    if (filename == (NSString*) [NSNull null] || [NULL_VALUE isEqualToString: filename]) {
+        filename = [dict[KEY_URL] lastPathComponent];
+    }
     return [savedDirURL URLByAppendingPathComponent:filename];
 }
 
